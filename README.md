@@ -1,5 +1,14 @@
 # simple-dapp
-Simple decentralized application (dApp) demonstration
+
+Simple decentralized application (dApp) demonstration. 
+
+Smart contract is under the blockchain folder and created with Hardhat.
+
+Frontend is under the frontend folder and created with [dApp CRA Template](https://github.com/huseyindeniz/cra-template-dapp). 
+
+You can create your own frontend by simply running the following command in your terminal:
+
+```npx create-react-app mydapp --template @huseyindeniz/dapp```
 
 # How to run?
 
