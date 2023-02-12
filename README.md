@@ -16,7 +16,7 @@ You can create your own frontend by simply running the following command in your
 2. Start Ganache, create a new ethereum workspace, start it and leave it as open 
 3. Open the blokchain folder with VSCode
 4. Open terminal
-5. Run ```npm i```first then run ```npx hardhat run scripts/deploy.ts```
+5. Run ```npm i```first then run ```npx hardhat run scripts/deploy.ts --network ganache```
 6. You will see the address of the HelloWorld contract on the console log. Copy it.
 7. Open the frontend folder with VSCode
 8. Open the file src/features/helloWorld/chains/ganache.ts
