@@ -20,10 +20,10 @@ const config: HardhatUserConfig = {
     },
   },
   paths: {
-    artifacts: "../frontend/src/blockchain/artifacts",
+    artifacts: "../client/src/blockchain/artifacts",
   },
   typechain: {
-    outDir: "../frontend/src/blockchain/types",
+    outDir: "../client/src/blockchain/types",
     target: "ethers-v5",
   },
   networks: {
