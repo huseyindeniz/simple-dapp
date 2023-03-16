@@ -34,6 +34,7 @@ import { useTranslation } from 'react-i18next';
 import useTypedSelector from '../../../hooks/useTypedSelector';
 import {
   LoadingStatusType,
+  SetMessageRequest,
   SetMessageSchema,
   SET_MESSAGE_ERROR,
   SET_MESSAGE_STATE,
@@ -53,12 +54,12 @@ export const SetMessageForm: React.FC = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({
+  } = useForm<SetMessageRequest>({
     resolver: zodResolver(SetMessageSchema),
   });
 
-  const onSubmit = (data: any) => {
-    actions.setMessage(data.message);
+  const onSubmit = (data: SetMessageRequest) => {
+    actions.setMessage(data);
   };
 
   const handleSuccess = () => {
@@ -78,8 +79,9 @@ export const SetMessageForm: React.FC = () => {
     <>
       <Button
         leftIcon={<MdEdit />}
-        variant={'outline'}
+        variant="solid"
         onClick={onOpen}
+        colorScheme="yellow"
         isDisabled={
           setMessageOp.opState === SET_MESSAGE_STATE.REQUESTED ||
           setMessageOp.opState === SET_MESSAGE_STATE.TRANSACTION_SENT
@@ -88,6 +90,7 @@ export const SetMessageForm: React.FC = () => {
           setMessageOp.opState === SET_MESSAGE_STATE.REQUESTED ||
           setMessageOp.opState === SET_MESSAGE_STATE.TRANSACTION_SENT
         }
+        loadingText={t('waiting tx to finalize') as string}
       >
         Set Message
       </Button>
@@ -105,7 +108,7 @@ export const SetMessageForm: React.FC = () => {
                 mt={2}
                 p={2}
               >
-                <FormControl isInvalid={Boolean(errors.banner)}>
+                <FormControl isInvalid={Boolean(errors.message)}>
                   <Wrap>
                     <WrapItem>
                       <FormLabel>Message</FormLabel>
@@ -115,10 +118,14 @@ export const SetMessageForm: React.FC = () => {
                       <Box>Message</Box>
                     </WrapItem>
                   </Wrap>
-                  <Input id="banner" {...register('message')} maxLength={100} />
+                  <Input
+                    id="message"
+                    {...register('message')}
+                    maxLength={100}
+                  />
                   <FormHelperText>Max 100 chars</FormHelperText>
                   <FormErrorMessage>
-                    {errors.banner && (errors.banner.message as string)}
+                    {errors.message && (errors.message.message as string)}
                   </FormErrorMessage>
                 </FormControl>
               </Box>

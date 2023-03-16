@@ -32,6 +32,8 @@ export const SetMessageSchema = z.object({
     .max(100),
 });
 
+export type SetMessageRequest = z.infer<typeof SetMessageSchema>;
+
 export type SetMessageOperation = {
   loading: LoadingStatusType;
   opState: SET_MESSAGE_STATE;

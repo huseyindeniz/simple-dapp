@@ -1,4 +1,12 @@
-import { Box, Center, VStack, Progress, Text, Card } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  VStack,
+  Progress,
+  Text,
+  Card,
+  Divider,
+} from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -47,8 +55,9 @@ export const Message: React.FC = () => {
 
   return (
     <VStack spacing={4} mt="2">
-      {message.data !== undefined ? Content : message.error ? Error : null}
       {message.loading === LoadingStatusType.PENDING ? Loading : null}
+      {message.data !== undefined ? Content : message.error ? Error : null}
+      <Divider />
       <SetMessageForm />
     </VStack>
   );

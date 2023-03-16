@@ -8,6 +8,7 @@ import {
   HelloWorldNetworkType,
   IHelloWorldAPI,
   LoadingStatusType,
+  SetMessageRequest,
   SET_MESSAGE_ERROR,
   SET_MESSAGE_STATE,
 } from './types';
@@ -67,12 +68,12 @@ export function* HandleGetMessage(helloWorldApi: IHelloWorldAPI) {
 
 export function* HandleSetMessageRequest(
   helloWorldApi: IHelloWorldAPI,
-  message: string
+  setMessageRequest: SetMessageRequest
 ) {
   try {
     const setMessageTxHash: string = yield call(
       helloWorldApi.setMessage,
-      message
+      setMessageRequest.message
     );
     yield put(
       slicesActions.setMessageOpState(SET_MESSAGE_STATE.TRANSACTION_SENT)
