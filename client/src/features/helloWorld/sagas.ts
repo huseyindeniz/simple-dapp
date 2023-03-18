@@ -16,6 +16,7 @@ import {
 // ACTION EFFECTS
 export function* ActionEffectLoadContract(helloWorldApi: IHelloWorldAPI) {
   try {
+    yield call(helloWorldApi.reset);
     const initResult: boolean = yield call(helloWorldApi.init);
     if (initResult) {
       const network: HelloWorldNetworkType | null = helloWorldApi.getNetwork();
