@@ -27,3 +27,5 @@ You can create your own frontend by simply running the following command in your
 
 
 ![gif](https://github.com/huseyindeniz/simple-dapp/raw/main/docs/Animation4.gif)
+
+test
